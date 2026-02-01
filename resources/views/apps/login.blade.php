@@ -7,7 +7,7 @@
 
     <!-- Left image section -->
     <div class="hidden md:block md:w-1/2">
-        <img src="https://i.pinimg.com/736x/45/9f/01/459f017c3f8b518351c3a5eca3567d0e.jpg"
+        <img src="https://img.freepik.com/free-photo/anime-car-city_23-2151710997.jpg?semt=ais_hybrid&w=740&q=80"
             alt="Login Image" class="h-screen w-full object-cover">
     </div>
 
