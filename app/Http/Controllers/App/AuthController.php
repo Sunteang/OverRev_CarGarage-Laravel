@@ -50,14 +50,27 @@ class AuthController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:tbl_users,email',
+            'email' => 'required|string|email|max:255|unique:tbl_users',
             'password' => 'required|string|confirmed|min:6',
         ]);
 
-        $validated['password'] = Hash::make($validated['password']);
+        // Auto-generate username from name
+        $baseUsername = strtolower(str_replace(' ', '.', $validated['name']));
+        $username = $baseUsername;
+        $counter = 1;
 
-        User::create($validated);
+        // Make sure username is unique
+        while (\App\Models\User::where('username', $username)->exists()) {
+            $username = $baseUsername . $counter;
+            $counter++;
+        }
 
-        return redirect()->route('user.login')->with('success', 'Account created! Please login.');
+        $validated['username'] = $username;
+
+        // Password will be automatically hashed by setPasswordAttribute in User model
+        \App\Models\User::create($validated);
+
+        return redirect()->route('user.login')
+            ->with('success', 'Account created! Your username: ' . $username);
     }
 }

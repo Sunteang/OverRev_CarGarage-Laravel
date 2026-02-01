@@ -32,6 +32,6 @@
         </div>
     </div>
     <div class="text-center mt-6 pb-4 text-gray-500">
-        &copy; 2025 OverRev-CarGarage. All rights reserved. Made by Sunteang SEREY.
+        &copy; {{ date('Y') }} OverRev-CarGarage. All rights reserved. Made by Sunteang SEREY.
     </div>
 </footer>

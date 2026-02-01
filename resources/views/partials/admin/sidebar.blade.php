@@ -15,7 +15,11 @@ $menuItems = [
 
 <div class="w-64 bg-blue-900 text-gray-100 flex-shrink-0 h-screen flex flex-col">
     <div class="px-6 py-4">
-        <h2 class="text-2xl font-bold text-white">CarGarage Admin</h2>
+        <a href="{{ route('home') }}">
+            <h2 class="text-2xl font-bold text-white cursor-pointer">
+                CarGarage Admin
+            </h2>
+        </a>
     </div>
 
     <nav class="mt-6 flex-1 overflow-y-auto">

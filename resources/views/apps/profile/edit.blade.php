@@ -36,7 +36,7 @@
                         <input type="file" name="avatar" accept="image/*" class="w-full">
                     </div>
                     <div>
-                        <img src="{{ $user->avatar ? asset('storage/'.$user->avatar) : 'https://toyotires.s3-ap-southeast-2.amazonaws.com/public/Images/blog/Thunderbolt.jpg' }}"
+                        <img src="{{ $user->avatar ? asset('storage/'.$user->avatar) : asset('images/default-avatar.png') }}"
                             class="w-20 h-17 rounded-full object-cover border-3 border-indigo-500 shadow-lg">
                     </div>
                 </div>

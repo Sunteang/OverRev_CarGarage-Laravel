@@ -16,7 +16,7 @@
                 <!-- Profile Button for logged-in users -->
                 <button @click="open = true" class="w-10 h-10 rounded-full overflow-hidden border-2 border-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                     <img class="w-full h-full object-cover"
-                        src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : 'https://toyotires.s3-ap-southeast-2.amazonaws.com/public/Images/blog/Thunderbolt.jpg' }}"
+                        src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('images/default-avatar.png') }}"
                         alt="{{ Auth::user()->name }}">
 
                 </button>

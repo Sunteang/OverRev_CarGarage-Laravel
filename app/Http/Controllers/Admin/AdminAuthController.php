@@ -15,15 +15,6 @@ class AdminAuthController extends Controller
 
     public function login(Request $request)
     {
-        if (config('app.env') === 'local' && env('ADMIN_AUTO_LOGIN') === 'true') {
-            $admin = \App\Models\Admin::where('username', env('ADMIN_AUTO_USERNAME'))->first();
-            if ($admin) {
-                Auth::guard('admin')->login($admin);
-                return redirect()->route('admin.dashboard');
-            }
-        }
-
-
         // Normal login flow
         $credentials = $request->validate([
             'username' => ['required', 'string', 'max:255'],

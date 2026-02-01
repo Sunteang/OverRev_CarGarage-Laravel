@@ -14,7 +14,7 @@
     <div class="max-w-4xl mx-auto -mt-24 relative z-10">
         <div class="bg-white shadow-2xl rounded-2xl p-8">
             <div class="flex items-center space-x-6">
-                <img src="{{ $user->avatar ? asset('storage/'.$user->avatar) : 'https://toyotires.s3-ap-southeast-2.amazonaws.com/public/Images/blog/Thunderbolt.jpg' }}"
+                <img src="{{ $user->avatar ? asset('storage/'.$user->avatar) : asset('images/default-avatar.png') }}"
                     class="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg transform hover:scale-105 transition duration-300">
 
                 <div>
@@ -95,16 +95,31 @@
             </div>
 
             <!-- Actions -->
-            <div class="mt-10 flex space-x-4">
+            <div class="mt-10 flex flex-wrap gap-4">
+
+                {{-- Admin-only button --}}
+                @if(auth()->user()->isAdmin())
+                    <a href="{{ route('admin.dashboard') }}"
+                    class="px-5 py-2.5 bg-emerald-600 text-white rounded-xl shadow-md
+                            hover:bg-emerald-700 hover:shadow-lg transition
+                            transform hover:-translate-y-0.5 flex items-center gap-2">
+                        Dashboard Admin
+                    </a>
+                @endif
+
                 <a href="{{ route('profile.edit') }}"
-                    class="px-5 py-2.5 bg-indigo-600 text-white rounded-xl shadow-md hover:bg-indigo-700 hover:shadow-lg transition transform hover:-translate-y-0.5">
+                class="px-5 py-2.5 bg-indigo-600 text-white rounded-xl shadow-md
+                        hover:bg-indigo-700 hover:shadow-lg transition
+                        transform hover:-translate-y-0.5">
                     Edit Profile
                 </a>
 
                 <form method="POST" action="{{ route('user.logout') }}">
                     @csrf
                     <button type="submit"
-                        class="px-5 py-2.5 bg-red-500 text-white rounded-xl shadow-md hover:bg-red-600 hover:shadow-lg transition transform hover:-translate-y-0.5">
+                        class="px-5 py-2.5 bg-red-500 text-white rounded-xl shadow-md
+                            hover:bg-red-600 hover:shadow-lg transition
+                            transform hover:-translate-y-0.5">
                         Logout
                     </button>
                 </form>

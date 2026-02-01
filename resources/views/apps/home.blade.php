@@ -104,11 +104,12 @@
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
         @forelse($testimonials as $testimonial)
         <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition">
-            <img src="{{ $testimonial->avatar 
-          ? asset('storage/'.$testimonial->avatar) 
-          : 'https://via.placeholder.com/150' }}"
-                class="w-24 h-24 mx-auto rounded-full mb-4"
-                alt="{{ $testimonial->customer->name }}">
+            <img
+                src="{{ $testimonial->avatar
+                    ? asset('storage/' . $testimonial->avatar)
+                    : asset('images/default-avatar.png') }}"
+                class="w-24 h-24 mx-auto rounded-full mb-4 object-cover"
+                alt="{{ $testimonial->customer->name ?? 'Customer' }}">
             <p class="italic text-gray-700 mb-2">"{{ $testimonial->message }}"</p>
             <span class="text-gray-500">- {{ $testimonial->customer->name }}</span>
         </div>
